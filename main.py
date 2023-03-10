@@ -1,6 +1,8 @@
-#---------------------------------------- Menu Definition ----------------------------------------
-# In this part of the code, it is determined what items the menu contains and what materials and how much are needed to
-# prepare each item.
+"""---------------------------------------- Menu Definition ----------------------------------------
+
+In this part of the code, it is determined what items the menu contains and what materials and how much are needed to
+prepare each item.
+"""
 menu = {
     "espresso": {
         "ingredients": {
@@ -27,8 +29,10 @@ menu = {
     }
 }
 
-#---------------------------------------- Resources Definition ----------------------------------------
-# This part of the code specifies what resources and how much of each are available to prepare the orders.
+"""---------------------------------------- Resources Definition ----------------------------------------
+
+This part of the code specifies what resources and how much of each are available to prepare the orders.
+"""
 
 resources = {
     "water": 300,
@@ -36,8 +40,10 @@ resources = {
     "coffee": 100,
 }
 
-#---------------------------------------- Valid Currencies Definition ----------------------------------------
-# In this part of the code, the valid monetary units and the value of each of them are specified.
+"""---------------------------------------- Valid Currencies Definition ----------------------------------------
+
+In this part of the code, the valid monetary units and the value of each of them are specified.
+"""
 
 coin = {
     "penny": 0.01,
@@ -46,8 +52,10 @@ coin = {
     "quarter": 0.25,
 }
 
-#---------------------------------------- The function to calculate the rest of the money Definition -------------------
-# In this part of the code, the amount of money that should be returned to the customer is calculated.
+"""---------------------------------------- The function to calculate the rest of the money Definition -----------------
+
+In this part of the code, the amount of money that should be returned to the customer is calculated.
+"""
 
 def check_transaction(item, cost, money, order):
     if money < menu[item][cost]:
@@ -67,15 +75,17 @@ def check_transaction(item, cost, money, order):
             resources['coffee'] -= 24
         return f"Here is ${cng} in change.\nHere is your {item} ☕️. Enjoy!"
 
-#---------------------------------------- Main body of code ----------------------------------------
-# In this part of the code, First, the order is received. Then, according to the availability of resources,
-# it becomes possible to respond to the order. Then the amount of the order is received from the user and the amount
-# of money that can be returned is calculated based on the amount received and the price of the order.
+"""---------------------------------------- Main body of code ----------------------------------------
+
+In this part of the code, First, the order is received. Then, according to the availability of resources, it becomes 
+possible to respond to the order. Then the amount of the order is received from the user and the amount of money that 
+can be returned is calculated based on the amount received and the price of the order.
+"""
 
 def coffe_run():
-    # ---------------------------------------- Order Reception ----------------------------------------
+    """---------------------------------------- Order Reception ----------------------------------------"""
     order = input("What would you like? (espresso/ latte/ cappuccino/ report):")
-    # ---------------------------------------- Checking sources ----------------------------------------
+    """---------------------------------------- Checking sources ----------------------------------------"""
     money = float(0)
     if order == "report":
         print(
@@ -101,14 +111,14 @@ def coffe_run():
             print("Sorry there is not enough Milk.")
         elif resources["coffee"] < 24:
             print("Sorry there is not enough Coffee.")
-    # ---------------------------------------- Money reception ----------------------------------------
+    """---------------------------------------- Money reception ----------------------------------------"""
     print("Please insert coins.")
     qtr = int(input("how many quarters?:\n"))
     dim = int(input("how many dimes?:\n"))
     ncl = int(input("how many nickles?:\n"))
     pen = int(input("how many pennies?:\n"))
     money = (qtr * coin['quarter']) + (dim * coin['dime']) + (ncl * coin['nickel']) + (pen * coin['penny'])
-    # ---------------------------------------- Remaining Money Calculation ----------------------------------------
+    """---------------------------------------- Remaining Money Calculation ----------------------------------------"""
     if order == "espresso":
         print(check_transaction('espresso', 'cost', money, order))
     elif order == "latte":
@@ -116,5 +126,5 @@ def coffe_run():
     elif order == "cappuccino":
         print(check_transaction('cappuccino', 'cost', money, order))
     coffe_run()
-# ---------------------------------------- Coffee Machine Running ----------------------------------------
+"""---------------------------------------- Coffee Machine Running ----------------------------------------"""
 coffe_run()
