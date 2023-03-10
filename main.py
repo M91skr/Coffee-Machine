@@ -52,12 +52,12 @@ coin = {
     "quarter": 0.25,
 }
 
-"""---------------------------------------- The function to calculate the rest of the money Definition -----------------
-
-In this part of the code, the amount of money that should be returned to the customer is calculated.
-"""
 
 def check_transaction(item, cost, money, order):
+    """---------------------------------------- The function to calculate the rest of the money Definition -----------------
+
+    In this part of the code, the amount of money that should be returned to the customer is calculated.
+    """
     if money < menu[item][cost]:
         return f"Sorry that's not enough money. Money refunded."
     else:
@@ -75,17 +75,18 @@ def check_transaction(item, cost, money, order):
             resources['coffee'] -= 24
         return f"Here is ${cng} in change.\nHere is your {item} ☕️. Enjoy!"
 
-"""---------------------------------------- Main body of code ----------------------------------------
-
-In this part of the code, First, the order is received. Then, according to the availability of resources, it becomes 
-possible to respond to the order. Then the amount of the order is received from the user and the amount of money that 
-can be returned is calculated based on the amount received and the price of the order.
-"""
 
 def coffe_run():
-    """---------------------------------------- Order Reception ----------------------------------------"""
+    """---------------------------------------- Main body of code ----------------------------------------
+
+    In this part of the code, First, the order is received. Then, according to the availability of resources, it becomes
+    possible to respond to the order. Then the amount of the order is received from the user and the amount of money that
+    can be returned is calculated based on the amount received and the price of the order.
+    """
+
+    # ---------------------------------------- Order Reception ----------------------------------------
     order = input("What would you like? (espresso/ latte/ cappuccino/ report):")
-    """---------------------------------------- Checking sources ----------------------------------------"""
+    # ---------------------------------------- Checking sources ----------------------------------------
     money = float(0)
     if order == "report":
         print(
@@ -111,14 +112,14 @@ def coffe_run():
             print("Sorry there is not enough Milk.")
         elif resources["coffee"] < 24:
             print("Sorry there is not enough Coffee.")
-    """---------------------------------------- Money reception ----------------------------------------"""
+    # ---------------------------------------- Money reception ----------------------------------------
     print("Please insert coins.")
     qtr = int(input("how many quarters?:\n"))
     dim = int(input("how many dimes?:\n"))
     ncl = int(input("how many nickles?:\n"))
     pen = int(input("how many pennies?:\n"))
     money = (qtr * coin['quarter']) + (dim * coin['dime']) + (ncl * coin['nickel']) + (pen * coin['penny'])
-    """---------------------------------------- Remaining Money Calculation ----------------------------------------"""
+    # ---------------------------------------- Remaining Money Calculation ----------------------------------------
     if order == "espresso":
         print(check_transaction('espresso', 'cost', money, order))
     elif order == "latte":
@@ -126,5 +127,7 @@ def coffe_run():
     elif order == "cappuccino":
         print(check_transaction('cappuccino', 'cost', money, order))
     coffe_run()
-"""---------------------------------------- Coffee Machine Running ----------------------------------------"""
+
+
+# ---------------------------------------- Coffee Machine Running ----------------------------------------
 coffe_run()
