@@ -7,3 +7,10 @@ can be returned is calculated based on the amount received and the price of the 
 
 ## How to run
 `python main.py`
+
+## ## How to deploy
+
+You need to have docker installed on your machine. you can easily deploy the service with executing
+the following command in your terminal:
+
+docker compose up
